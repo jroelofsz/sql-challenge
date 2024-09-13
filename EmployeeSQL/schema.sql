@@ -22,12 +22,12 @@ CREATE TABLE departments (
 CREATE TABLE employees (
 	id int PRIMARY KEY NOT NULL,
 	title_id char(5) NOT NULL,
-	birth_date date,
+	birth_date date, NOT NULL
 	first_name varchar(255),
 	last_name varchar(255),
 	sex char(1),
 	hire_date date,
-	FOREIGN KEY(title_id) REFERENCES titles(title_id)
+	FOREIGN KEY(title_id) REFERENCES titles(title_id) 
 );
 
 --salary table creation
@@ -39,8 +39,8 @@ CREATE TABLE salary (
 
 
 CREATE TABLE dept_managers (
-	dept_no varchar(4) ,
-	id int,
+	dept_no varchar(4) NOT NULL,
+	id int NOT NULL,
 	PRIMARY KEY (id,dept_no),
 	FOREIGN KEY (id) REFERENCES employees(id),
 	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
@@ -48,8 +48,8 @@ CREATE TABLE dept_managers (
 
 
 CREATE TABLE dept_employee (
-	 id int,
-	 dept_no varchar(4),
+	 id int NOT NULL,
+	 dept_no varchar(4) NOT NULL,
 	 FOREIGN KEY (id) REFERENCES employees(id),
 	 FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
 	 PRIMARY KEY (id, dept_no)
